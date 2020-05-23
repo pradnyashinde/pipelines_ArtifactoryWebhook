@@ -1,0 +1,18 @@
+resources:
+  - name:       MyIncomingArtifactoryWebhookResource
+    type:       IncomingWebhook
+    configuration:
+      webhookName: ArtifactoryWebhook
+ 
+pipelines:
+  - name: Pipeline_Artifactory_Webhook
+  - steps:
+    - name: ExampleStep
+      type: Bash
+      configuration:
+        inputResources:
+          - name: MyIncomingArtifactoryWebhookResource
+      execution:
+          onExecute:
+            - echo "$res_MyIncomingArtifactoryWebhookResource_payload" | jq '.' > payload.json
+            - read_json payload.json "LESSER_SECRET_FORMULA"
