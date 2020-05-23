@@ -6,7 +6,7 @@ resources:
  
 pipelines:
   - name: Pipeline_Artifactory_Webhook
-  - steps:
+    steps:
     - name: ExampleStep
       type: Bash
       configuration:
