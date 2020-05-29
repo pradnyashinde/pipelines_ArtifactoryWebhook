@@ -7,7 +7,7 @@ resources:
 pipelines:
   - name: Pipeline_Artifactory_Webhook
     steps:
-    - name: ExampleStep
+    - name: receiveHook
       type: Bash
       configuration:
         inputResources:
@@ -16,3 +16,4 @@ pipelines:
           onExecute:
             - echo "$res_MyIncomingArtifactoryWebhookResource_payload" | jq '.' > payload.json
             - read_json payload.json "imageTag"
+            - read_json payload.json "imageName"
