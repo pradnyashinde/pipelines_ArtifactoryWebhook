@@ -17,3 +17,4 @@ pipelines:
             - echo "$res_MyIncomingArtifactoryWebhookResource_payload" | jq '.' > payload.json
             - read_json payload.json "imageTag"
             - read_json payload.json "imageName"
+            - echo "$debug"
